@@ -1,0 +1,66 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- <css src="Magento_Review::css/stylerv.css"/> -->
+    </head>
+    <body>
+<!--        <container name="page" htmlTag="div" htmlClass="page">-->
+<!--        </container>-->
+<!--        <container name="page-footer" htmlTag="div" htmlClass="page-footer">-->
+<!--        </container>-->
+<!--        <move element="page.wrapper" destination="page" before="-"/>-->
+<!--        <move element="page-footer" destination="page" after="-"/>-->
+<!--        <move element="footer1" destination="page-footer" before="-"/>-->
+<!--        <move element="footer2" destination="page-footer" after="footer1"/>-->
+<!--        <move element="copyright" destination="page-footer" after="-"/>-->
+<!--        <move element="currency" destination="header.panel" before="store-language"/>-->
+<!--    <move element="store-language" destination="header.panel" after="-"/>-->
+
+<!--     <move element="top.search" destination="new.head.right" after="-" />-->
+<!--   <referenceContainer name="header.container">-->
+<!--   <referenceContainer name="header.panel.wrapper">-->
+<!--  -->
+<!--   </referenceContainer>-->
+<!--  -->
+<!--    <referenceBlock name="logo">-->
+<!--            <arguments>-->
+<!--                <argument name="logo_img_width" xsi:type="number">300</argument>-->
+<!--                <argument name="logo_img_height" xsi:type="string">auto</argument>-->
+<!--            </arguments>-->
+<!--        </referenceBlock>-->
+<!--        <referenceContainer name="header-wrapper">-->
+<!--           <container name="new.head.right" htmlTag="div" htmlClass="new-head-right">-->
+<!--           <container name="top.new.head.right" htmlTag="div" htmlClass="top-new-head-right">-->
+<!--           </container>-->
+<!--           <container name="bottom.new.head.right" htmlTag="div" htmlClass="bottom-new-head-right">-->
+<!--           </container>-->
+<!--           </container>-->
+<!--        </referenceContainer>-->
+<!--   </referenceContainer>-->
+<!--    <referenceBlock  name="minicart"  template="Magento_Checkout::cart/minicart.phtml"/>-->
+<!--    <referenceBlock  name="top.search"  template="Magento_Search::form.mini.phtml"/>-->
+<!--    <move element="top.search" destination="bottom.new.head.right" after="-" /> -->
+<!--     <move element="my-account-link" destination="top.new.head.right" before="-" /> -->
+<!--      <move element="wish-list-link" destination="top.new.head.right" after="my-account-link" /> -->
+<!--       <move element="minicart" destination="top.new.head.right" after="wish-list-link" before="authorization-link" /> -->
+<!--        <move element="authorization-link" destination="top.new.head.right" after="-" /> -->
+<!--<referenceBlock name="register-link" remove="true"/>-->
+
+        <referenceContainer name="page">
+            <block class="Magento\Cms\Block\Block" name="footer1" after="page.wrapper" before="page-footer">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer1</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+   <referenceContainer name="main.content">
+   </referenceContainer>
+
+<!--        <referenceContainer name="sidebar.main">-->
+<!--            <container name="mycartcata" htmlTag="div" htmlClass="mycartcata">-->
+<!--                <block class="Magento\Framework\View\Element\Template" name="blockmycart" template="Magento_Cms::mycart.phtml"/>-->
+<!--            </container>-->
+<!--        </referenceContainer>-->
+  
+   
+    </body>
+</page>

@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php $_product = $block->getProduct() ?>
+<div class="links-net">
+<a href="#" class="fb" style="margin-left: 80px;"><img src="<?php echo $block->getViewFileUrl('images/fb.jpg'); ?>" /></a>
+<a href="#" class="tw"><img src="<?php echo $block->getViewFileUrl('images/tw.jpg'); ?>" /></a>
+<?php if ($block->canEmailToFriend()): ?>
+    <a href="<?= /* @escapeNotVerified */
+    $this->helper('Magento\Catalog\Helper\Product')->getEmailToFriendUrl($_product) ?>"
+       class="action mailto friend">
+        <img src="<?php echo $block->getViewFileUrl('images/mail.jpg'); ?>" />
+        <span><?= /* @escapeNotVerified */
+            __('') ?></span></a>
+<?php endif; ?>
+<a href="#" class="print"><img src="<?php echo $block->getViewFileUrl('images/pr.jpg'); ?>" /></a>
+<a href="#" class="load"><img src="<?php echo $block->getViewFileUrl('images/singin.jpg'); ?>" /></a>
+<p class="count"></p>
+</div>

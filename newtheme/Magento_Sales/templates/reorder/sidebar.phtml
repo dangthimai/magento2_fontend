@@ -1,0 +1,83 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Last ordered items sidebar
+ *
+ * @var $block \Magento\Sales\Block\Reorder\Sidebar
+ */
+?>
+<div class="block block-reorder" data-bind="scope: 'lastOrderedItems'">
+    <div class="reorder-tittle"><p>My Cart</p></div>
+    <div class="add-back">
+        <P>These is 1 item in your cart</P>
+        <div class="subtotal"><p>Cart Subtotal: $250000</p></div>
+        <button class="checkout-reorder">checkout</button>
+    </div>
+    <div class="block-title no-display"
+         data-bind="css: {'no-display': !lastOrderedItems().items || lastOrderedItems().items.length === 0}">
+        <strong id="block-reorder-heading" role="heading" aria-level="2"><?= /* @escapeNotVerified */ __('Recently added Item(s)') ?></strong>
+    </div>
+    <div class="block-content no-display"
+         data-bind="css: {'no-display': !lastOrderedItems().items || lastOrderedItems().items.length === 0}"
+         aria-labelledby="block-reorder-heading">
+        <form method="post" class="form reorder"
+              action="<?= /* @escapeNotVerified */ $block->getFormActionUrl() ?>" id="reorder-validate-detail">
+            <strong class="subtitle"><?= /* @escapeNotVerified */ __('Last Ordered Items') ?></strong>
+            <ol id="cart-sidebar-reorder" class="product-items product-items-names"
+                data-bind="foreach: lastOrderedItems().items">
+                <li class="product-item">
+                    <div class="field item choice">
+                        <?php if ($block->hasProductUrl()):?>
+                        <a href="<?= /* @escapeNotVerified */ $block->getProductUrl() ?>"
+                           title="<?= $block->escapeHtml($block->getProductName()) ?>"
+                           tabindex="-1"
+                           class="product-item-photo">
+
+
+                            <?php else:?>
+                            <span class="product-item-photo">
+            <?php endif;?>
+
+                    </div>
+                    <strong class="product-item-name">
+                        <a data-bind="attr: {href: url}" class="product-item-link" style="font-size: 10pt;">
+                            <span data-bind="text: name"></span>
+                        </a>
+                    </strong>
+                    <i class="fa fa-pencil" aria-hidden="true" style="color:#E6DF2A;"></i>
+                    <i class="fa fa-trash-o" aria-hidden="true" ></i>
+                </li>
+            </ol>
+            <div id="cart-sidebar-reorder-advice-container"></div>
+
+        </form>
+    </div>
+    <script>
+    require(["jquery", "mage/mage"], function(jQuery){
+        jQuery('#reorder-validate-detail').mage('validation', {
+            errorPlacement: function(error, element) {
+                error.appendTo('#cart-sidebar-reorder-advice-container');
+            }
+        });
+    });
+    </script>
+</div>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "lastOrderedItems": {
+                    "component": "Magento_Sales/js/view/last-ordered-items"
+                }
+            }
+        }
+    }
+}
+</script>

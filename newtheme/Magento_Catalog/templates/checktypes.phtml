@@ -1,0 +1,47 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product view template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View
+ */
+?>
+<p>aaaaaaaaaaaaaa</p>
+<?php $_product = $block->getProduct(); ?>
+<?php
+//echo $this->getChildHtml('add-tocarts');?>
+
+<?php if (!$block->hasOptions()):?>
+    <?= $block->getChildHtml('product_info_form_content') ?>
+<?php else:?>
+    <?php if ($_product->isSaleable() && $block->getOptionsContainer() == 'container1'):?>
+        <?= $block->getChildHtml('testadd') ?>
+    <?php endif;?>
+<?php endif; ?>
+
+<?php if ($_product->isSaleable() && $block->hasOptions() && $block->getOptionsContainer() == 'container2'):?>
+    <?= $block->getChildHtml('testadd') ?>
+<?php endif;?>
+<?= $block->getChildHtml('form_bottom') ?>
+
+<script type="text/javascript">
+    require([
+        'domReady!'
+    ], function () {
+        'use strict';
+        var submitdemo = document.getElementById("product-addtocart-button");
+        var formsubmit = document.getElementById("product_addtocart_form");
+        submitdemo.addEventListener("click", function () {
+            console.log("aaaaaa");
+            formsubmit.submit();
+        });
+    });
+
+</script>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="mage/gallery/gallery.css"/>
+    </head>
+    <update handle="catalog_product_opengraph" />
+    <update handle="page_calendar"/>
+    <body>
+        <referenceContainer name="div.sidebar.additional">
+            <block class="Magento\Cms\Block\Block" name="popular" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">popular</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <move element="product.info.options.wrapper.bottom" destination="testadd"/>
+        <!--        <move element="product.info.addtocart.bundle" destination="add-info"/>-->
+        <move element="product.info.form.content" destination="add-tocarts"/>
+
+        <referenceContainer name="content">
+            <container name="add-info" htmlTag="div" htmlClass="add-info" before="product.info.details" after="product.info.media">
+                <block class="Magento\Cms\Block\Block" name="Extended"  before="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">Extended</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Catalog\Block\Product\View" name="add-tocarts" template="Magento_Catalog::checktypes.phtml" as="add-tocarts">
+                    <container name="testadd" htmlTag="div" htmlClass="testadd"></container>
+                </block>
+                <container name="action-and-info" htmlTag="div" htmlClass="action-and-info">
+                </container>
+            </container>
+        </referenceContainer>
+
+
+
+        <referenceContainer name="product.info.main">
+
+        </referenceContainer>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="product.info.sku" remove="true"/>
+        <move element="sale.reorder.sidebar" destination="div.sidebar.additional" before="-"/>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <move element="product.info.overview" destination="product.info.main" after="page.main.title"/>
+
+        <referenceContainer name="product.info.form.content" htmlTag="div" htmlClass="product-info-form-content"/>
+<!--        <referenceContainer name="product.info.addtocart.bundle" htmlTag="div" htmlClass="product-info-addtocart-bundle"/>-->
+        <move element="product.info.review" destination="product.info.options.wrapper.bottom" after="-"/>
+    </body>
+</page>

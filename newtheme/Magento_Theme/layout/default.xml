@@ -1,0 +1,95 @@
+
+
+ <page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <container name="page" htmlTag="div" htmlClass="page">
+        </container>
+        <container name="page-footer" htmlTag="div" htmlClass="page-footer">
+        </container>
+        <move element="page.wrapper" destination="page" before="-"/>
+        <move element="page-footer" destination="page" after="-"/>
+        <move element="footer2" destination="page-footer" before="-"/>
+        <move element="copyright" destination="page-footer" after="-"/>
+        <move element="currency" destination="header.panel" before="store-language"/>
+        <move element="store-language" destination="header.panel" after="-"/>
+
+        <move element="top.search" destination="new.head.right" after="-" />
+        <referenceContainer name="page.top">
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+        </referenceContainer>
+        <referenceContainer name="header.container">
+            <referenceContainer name="header.panel.wrapper">
+
+            </referenceContainer>
+
+            <referenceBlock name="logo">
+                <arguments>
+                    <argument name="logo_img_width" xsi:type="number">300</argument>
+                    <argument name="logo_img_height" xsi:type="string">auto</argument>
+                </arguments>
+            </referenceBlock>
+            <referenceContainer name="header-wrapper">
+                <container name="new.head.right" htmlTag="div" htmlClass="new-head-right">
+                    <container name="top.new.head.right" htmlTag="div" htmlClass="top-new-head-right">
+                    </container>
+                    <container name="bottom.new.head.right" htmlTag="div" htmlClass="bottom-new-head-right">
+                    </container>
+                </container>
+            </referenceContainer>
+        </referenceContainer>
+        <referenceBlock  name="minicart"  template="Magento_Checkout::cart/minicart.phtml"/>
+        <referenceBlock  name="top.search"  template="Magento_Search::form.mini.phtml"/>
+        <move element="top.search" destination="bottom.new.head.right" after="-" />
+        <move element="my-account-link" destination="top.new.head.right" before="-" />
+        <move element="wish-list-link" destination="top.new.head.right" after="my-account-link" />
+        <move element="minicart" destination="top.new.head.right" after="wish-list-link" before="checkout" />
+        <move element="authorization-link" destination="top.new.head.right" after="-" />
+        <referenceBlock name="register-link" remove="true"/>
+
+
+        <referenceBlock name="top.new.head.right">
+            <block class="Magento\Framework\View\Element\Html\Link" name="checkout" >
+                <arguments>
+<!--                    <argument name="html_class" xsi:type="string">checkout</argument>-->
+                    <argument name="label" xsi:type="string" translate="true">Checkout</argument>
+<!--                    <argument name="path" xsi:type="string">checkout</argument>-->
+                </arguments>
+            </block>
+    </referenceBlock>
+<!--        <container name="menu" htmlTag="div" htmlClass="menu">-->
+<!--        </container>-->
+<!--        <move element="navigation.sections" destination="menu" after=""  />-->
+        <referenceBlock name="navigation.sections">
+            <block class="Magento\Cms\Block\Block" name="link_menu" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">link_menu</argument>
+                </arguments>
+            </block>
+
+        </referenceBlock>
+<!--        <referenceBlock name="navigation.sections">-->
+<!--            <block class="Magento\Theme\Block\Html\Topmenu" name="catalog_link" template="Magento_Theme::catalog_link.phtml" after="-"/>-->
+
+<!--        </referenceBlock>-->
+
+
+        <referenceBlock name="footer_links" remove="true"/>
+         <referenceBlock name="form.subscribe" remove="true"/>
+         <referenceBlock name="report.bugs" remove="true"/>
+        <referenceContainer name="footer-container" remove="true"/>
+
+
+
+
+         <referenceContainer name="page-footer">
+             <block class="Magento\Cms\Block\Block" name="footer2" before="-" >
+                 <arguments>
+                     <argument name="block_id" xsi:type="string">footer2</argument>
+                 </arguments>
+             </block>
+
+         </referenceContainer>
+<!--         <move element="copyright" destination="footer2" after="-" />-->
+     </body>
+</page>
